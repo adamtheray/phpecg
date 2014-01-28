@@ -5,7 +5,7 @@
 <body>
 <a href="?action=edit&file=phone">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendant">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>
 <?php
-include_once("csvhandler/class.CSVHandler.php");
+include_once("class.CSVHandler.php");
 include_once("functions.php");
 $path="/tftpboot/test/";
 $attendantFile="attendants.csv";
