@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+<h1>class.CSVHandler.php 0.91</h1>
+<p>&copy; 2005 by andreas mueller hugo-at-v17-dot-de</p>
+<h3>
+
+What it does:</h3>
+<p>Retrieve and edit data from csv-files <br>
+this can be useful as a friendly replacement for small hosting without Database Support or just for q'n'd applications covering only one data table where there's no need to have full database support.</p>
+<h3>What it requires:</h3>
+<p>You only need  class.CSVHandler.php and a datafile in a &quot;delimited&quot; format with headers for column names.<br>
+Any character can be used as delimiter. These files can be created or changed with a text editor, but programs like excel and the like can handle them as well.<br>
+This is what these files look like:</p>
+<pre>record;id;address;Town;Phone
+103;Bopfingen City;Hauptstr. 26;73441 Bopfingen;07362 / 6393
+106;Aalen (Ostalbcenter);Wilhelm-Merz-Stra&szlig;e 41;73430 Aalen;07361 / 36734</pre>
+<p>The first line contains the field names that identify Data.</p>
+<h3>Usage:</h3>
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+		<td>function CSVHandler($Filename, $Separator, $KeyFieldName)</td>
+		<td>The constructor:<br>
+			Use any single character as Separator, the KeyFieldName designates the Field that will be used as internal reference. In EditMode, the Key Field cannot be altered.</td>
+	</tr>
+  <tr>
+		<td>array $result=Select($needle,[$column])</td>
+		<td>To retrieve only data that contain $needle. If $column is specified, only those records that contain $needle in $column are returned in $result.</td>
+	</tr>
+  <tr>
+		<td>array $result=GetValues($field)</td>
+		<td>Will return all values in the specified column in $result</td>
+	</tr>
+	<tr>
+		<td>function ListAll()</td>
+		<td>Prints a simple table containing all data (Example in <a href="list.php">list.php</a>)</td>
+	</tr>
+	<tr>
+		<td>function Edit();</td>
+		<td>Prints a complete Editing Table for all Data (Example in <a href="edit.php">edit.php</a>)</td>
+	</tr>
+	<tr>
+		<td>function Update($key,$data)</td>
+		<td>for updating the record $key. $Data is a nemed array, only fields in $data will be updated, and only if that fieldname exists in the DataFile.</td>
+	</tr>
+	<tr>
+		<td>function Add($key,$data)</td>
+		<td>adds a record $key with the contents of $data likewise.</td>
+	</tr>
+	<tr>
+		<td>function Delete($key)</td>
+		<td>removes record $key form the datafile.</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

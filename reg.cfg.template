@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Generated reg-basic.cfg Configuration File -->
+<polycomConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="polycomConfig.xsd">
+  <call call.callsPerLineKey="24">
+  </call>
+  <reg reg.1.address="EXTENSION" reg.1.auth.password="PASSWORD" reg.1.auth.userId="EXTENSION" reg.1.label="EXTENSION" reg.1.outboundProxy.address="" reg.2.address="" reg.2.auth.password="" reg.2.auth.userId="" reg.2.label="" reg.2.outboundProxy.address="" reg.1.lineKeys="1">
+  </reg>
+  ATTENDANT
+</polycomConfig>
