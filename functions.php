@@ -19,5 +19,13 @@ function csvArray($filename='', $delimiter=',')
     }
     return $data;
 }
-
+function templateCheck($template,$directory){
+	$templateExp=explode(".",$template);
+	$templateName="";
+	for($i=0;$i<count($templateExp)-1;$i++){
+		$templateName.=$templateExp[$i];
+	}
+	$templateName.=".template.".$templateExp[count($templateExp)-1];
+	if(!file_exists($directory.$template))copy($templateName,$directory.$template);
+}
 ?>

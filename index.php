@@ -3,49 +3,50 @@
 <title>Simple PHP Polycom Generator</title>
 </head>
 <body>
-<a href="?action=edit&file=phone">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendant">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>
+<a href="?action=edit&file=phoneExt">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendant">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>&nbsp;&nbsp;<a href="?action=edit&file=settings">Edit Settings</a>
 <?php
 include_once("class.CSVHandler.php");
 include_once("functions.php");
-$path="/tftpboot/";
-if (!file_exists($path."phpecg")) {
+include_once("settings.php");
+$configPath=$path."phpecg/";
+if (!file_exists($configPath)) {
 	mkdir($path.phpecg, 0775, true);
 }
-$attendantFile="attendants.csv";
-$phoneFile="phoneExt.csv";
-$attData=new CSVHandler($attendantFile,",","phoneIndex");
-$phoneData=new CSVHandler($phoneFile,",","attendantIndex");
-$accessData=$attData->GetValues("access");
-$phoneHeaders=$phoneData->getHeaders();
+$dataFiles=array(attendants=>"attendants.csv",phoneExt=>"phoneExt.csv",dialplan=>"dialplan.csv");
+foreach($dataFiles as $var=>$dataFile){
+	templateCheck($dataFile, $configPath);
+	$varName=$var."Data";
+	$$varName=new CSVHandler($configPath.$dataFile,",", $var."Index");
+}
+$accessData=$attendantsData->GetValues("access");
+$phoneExtHeaders=$phoneExtData->getHeaders();
 foreach($accessData as $access){
 	if($access!=""){
-		if(!in_array($access,$phoneHeaders))$phoneData->insertColumn($access);
+		if(!in_array($access,$phoneExtHeaders))$phoneExtData->insertColumn($access);
 	}
 }
-$goodColumns=array("mac","ext","pass","phoneIndex","attendantIndex");
-foreach($phoneHeaders as $header){
+$goodColumns=array("mac","ext","pass","phoneExtIndex","attendantIndex");
+foreach($phoneExtHeaders as $header){
 	if(!in_array($header,$accessData) && !in_array($header,$goodColumns)){
-		$phoneData->deleteColumn($header);
+		$phoneExtData->deleteColumn($header);
 	}
 }
 switch($_GET['action']){
 	case "edit":
-		switch($_GET['file']){
-			case "phone":
-				$file=$phoneFile;
-				$index="phoneIndex";
-				break;
-			case "attendant":
-				$file=$attendantFile;
-				$index="attendantIndex";
-				break;
-			case "dialplan":
-				$file="dialplan.csv";
-				$index="dpIndex";
+		switch ($_GET['file']){
+			case "settings":
+				$file=".settings.csv";
+				$index="settingsIndex";
 				break;
 			default:
-				$errorText="<br><br><b>No File to edit</b>";
-				exit($errorText);
+				if($_GET['file']==""){
+					$errorText="<br><br><b>No File to edit</b>";
+					exit($errorText);
+				}
+				else {
+					$file=$configPath.$dataFiles[$_GET['file']];
+					$index=$_GET['file']."Index";
+				}
 				break;
 		}
 		$data=new CSVHandler($file,",",$index);
@@ -53,7 +54,7 @@ switch($_GET['action']){
 		break;
 	case "writePhone":
 		if(!isset($_GET['mode'])){
-			$extensions=$phoneData->GetValues("ext");
+			$extensions=$phoneExtData->GetValues("ext");
 			$options="";
 			foreach($extensions as $extension){
 				$options.="<option value=\"$extension\">$extension</option>";
