@@ -7,7 +7,10 @@
 <?php
 include_once("class.CSVHandler.php");
 include_once("functions.php");
-$path="/tftpboot/test/";
+$path="/tftpboot/";
+if (!file_exists($path."phpecg")) {
+	mkdir($path.phpecg, 0775, true);
+}
 $attendantFile="attendants.csv";
 $phoneFile="phoneExt.csv";
 $attData=new CSVHandler($attendantFile,",","phoneIndex");
