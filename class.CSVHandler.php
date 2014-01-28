@@ -9,6 +9,7 @@
 #
 #
 # Copyright (C) 2005 by Andreas Müller
+# Modified by Adam Ray
 
 class CSVHandler {
 	var $Separator;		//
