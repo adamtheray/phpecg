@@ -1,2 +1,4 @@
 settingsIndex,Name,Value
-1,path,/tftpboot/
+1,path,CHANGEME
+2,SIPServer,CHANGEME
+3,ParkExtension,CHANGEME
