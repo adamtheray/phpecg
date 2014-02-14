@@ -4,7 +4,10 @@ foreach($phoneExtData->getData() as $thisPhoneExt){
 		$attendantInt=0;
 		$thisPhoneExt['attendants']="";
 		foreach($attendantsData->getData() as $thisAttendant){
-			if($thisAttendant['access']!=""){
+			if ($thisPhoneExt['ext']==$thisAttendant['code']) {
+				$access=0;
+			}
+			elseif($thisAttendant['access']!=""){
 				if($thisPhoneExt[$thisAttendant['access']]==""){
 					$access=0;
 				}
