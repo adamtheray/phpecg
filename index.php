@@ -3,7 +3,7 @@
 <title>Simple PHP Polycom Generator</title>
 </head>
 <body>
-<a href="?action=edit&file=phoneExt">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendant">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>&nbsp;&nbsp;<a href="?action=edit&file=settings">Edit Settings</a>
+<a href="?action=edit&file=phoneExt">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendants">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>&nbsp;&nbsp;<a href="?action=edit&file=settings">Edit Settings</a>
 <?php
 include_once("class.CSVHandler.php");
 include_once("functions.php");
