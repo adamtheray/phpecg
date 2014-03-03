@@ -2,3 +2,5 @@ settingsIndex,Name,Value
 1,path,CHANGEME
 2,SIPServer,CHANGEME
 3,ParkExtension,CHANGEME
+4,linekeysYorN,CHANGEME
+5,linekeysUnassignedType,CHANGEME

@@ -24,4 +24,5 @@
   </sip>
   <user_preferences up.useDirectoryNames="1" up.oneTouchVoiceMail="1"/>
   </user_preferences>
+  LINEKEYS
 </polycomConfig>

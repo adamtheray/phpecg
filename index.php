@@ -3,7 +3,7 @@
 <title>Simple PHP Polycom Generator</title>
 </head>
 <body>
-<a href="?action=edit&file=phoneExt">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendants">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>&nbsp;&nbsp;<a href="?action=edit&file=settings">Edit Settings</a>
+<a href="?action=edit&file=phoneExt">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendants">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=linekeys">Edit LineKeys</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>&nbsp;&nbsp;<a href="?action=edit&file=settings">Edit Settings</a>
 <?php
 include_once("class.CSVHandler.php");
 include_once("functions.php");
@@ -12,7 +12,7 @@ $configPath=$path."phpecg/";
 if (!file_exists($configPath)) {
 	mkdir($path.phpecg, 0775, true);
 }
-$dataFiles=array(attendants=>"attendants.csv",phoneExt=>"phoneExt.csv",dialplan=>"dialplan.csv");
+$dataFiles=array(attendants=>"attendants.csv",phoneExt=>"phoneExt.csv",dialplan=>"dialplan.csv",linekeys=>"linekeys.csv");
 foreach($dataFiles as $var=>$dataFile){
 	templateCheck($dataFile, $configPath);
 	$varName=$var."Data";
