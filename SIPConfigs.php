@@ -57,7 +57,7 @@ if ($linekeysYorN=="Y"){
 		$linekeyText.="lineKey.$i.index=\"$lineIndex\" lineKey.$i.category=\"$linekeysUnassignedType\" ";
 		$i++;
 	}
-	$linekeyText.="><linekey.reassignment.enabled=\"1\" \/><\/linekey>";
+	$linekeyText.="><lineKey.reassignment lineKey.reassignment.enabled=\"1\" \/><\/linekey>";
 }
 else $linekeyText="";
 $command="cat sip-basic.cfg.template | sed 's/DIALPLAN/$dialplanText/g' | sed 's/SEPARATOR/,/g' | sed 's/SIPSERVER/$SIPServer/g' | sed 's/CALLPARK/$parkText/g' | sed 's/LINEKEYS/$linekeyText/g' > ".$path."sip-basic.cfg";
