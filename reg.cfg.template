@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- Generated reg-basic.cfg Configuration File -->
 <polycomConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="polycomConfig.xsd">
+  <voIpProt>
+    <voIpProt.server voIpProt.server.1.address="SIPSERVER" voIpProt.server.1.port="0" voIpProt.server.2.address="" voIpProt.server.2.port="0">
+    </voIpProt.server>
+    <voIpProt.SIP voIpProt.SIP.enable="1">
+      <voIpProt.SIP.outboundProxy voIpProt.SIP.outboundProxy.address="SIPSERVER">
+      </voIpProt.SIP.outboundProxy>
+    </voIpProt.SIP>
+  </voIpProt>
+  <time tcpIpApp.sntp.address="NTPSERVER" tcpIpApp.sntp.gmtOffset.overrideDHCP="1" tcpIpApp.sntp.gmtOffset="-18000" />
   <call call.callsPerLineKey="24">
   </call>
   <reg reg.1.address="EXTENSION" reg.1.auth.password="PASSWORD" reg.1.auth.userId="EXTENSION" reg.1.label="EXTENSION" reg.1.outboundProxy.address="" reg.2.address="" reg.2.auth.password="" reg.2.auth.userId="" reg.2.label="" reg.2.outboundProxy.address="" reg.1.lineKeys="1">

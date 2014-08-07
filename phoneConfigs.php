@@ -26,7 +26,11 @@ foreach($phoneExtData->getData() as $thisPhoneExt){
 			$thisPhoneExt['attendants'].=" \/>";
 			$thisPhoneExt['attendants']=str_replace("EXTENSION",$thisPhoneExt['ext'],$thisPhoneExt['attendants']);
 		}
-		$command="cat reg.cfg.template | sed 's/EXTENSION/".$thisPhoneExt['ext']."/g' | sed 's/PASSWORD/".$thisPhoneExt['pass']."/g' | sed 's/ATTENDANT/".$thisPhoneExt['attendants']."/g' | sed 's/SEPARATOR/,/g' > $path".$thisPhoneExt['mac']."-reg.cfg";
+		if(!$thisPhoneExt['AltSIP']=="") $thisSIP=$thisPhoneExt['AltSIP'];
+		else $thisSIP=$SIPServer;
+		if(!$thisPhoneExt['AltNTP']=="") $thisNTP=$thisPhoneExt['AltNTP'];
+		else $thisNTP=$NTPServer;
+		$command="cat reg.cfg.template | sed 's/SIPSERVER/$thisSIP/g' | sed 's/EXTENSION/".$thisPhoneExt['ext']."/g' | sed 's/PASSWORD/".$thisPhoneExt['pass']."/g' | sed 's/ATTENDANT/".$thisPhoneExt['attendants']."/g' | sed 's/SEPARATOR/,/g' | sed 's/NTPSERVER/$thisNTP/g' > $path".$thisPhoneExt['mac']."-reg.cfg";
 		shell_exec($command);
 		if($_GET['extension']!="")break;
 	}
