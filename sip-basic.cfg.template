@@ -5,19 +5,11 @@
     <msg.mwi msg.mwi.1.callBackMode="contact" msg.mwi.1.callBack="*97" msg.mwi.2.callBackMode="registration">
     </msg.mwi>
   </msg>
-  <voIpProt>
-    <voIpProt.server voIpProt.server.1.address="SIPSERVER" voIpProt.server.1.port="0" voIpProt.server.2.address="" voIpProt.server.2.port="0">
-    </voIpProt.server>
-    <voIpProt.SIP voIpProt.SIP.enable="1">
-      <voIpProt.SIP.outboundProxy voIpProt.SIP.outboundProxy.address="SIPSERVER">
-      </voIpProt.SIP.outboundProxy>
-    </voIpProt.SIP>
-  </voIpProt>
-  <feature feature.urlDialing.enabled="0" feature.enhancedFeatureKeys.enabled="1" efk.efklist.5.mname="CallPark" efk.efklist.5.label="Park" efk.efklist.5.status="1" efk.efklist.5.action.string="$FTransfer$CALLPARK$FDial$Cp4$$Chu$" efk.efklist.6.mname="DND" efk.efklist.6.label="DND" efk.efklist.6.status="1" efk.efklist.6.action.string="$FDoNotDisturb$*76$Tinvite$$Cp4$$Chu$">
+<feature feature.urlDialing.enabled="0" feature.enhancedFeatureKeys.enabled="1" efk.efklist.5.mname="CallPark" efk.efklist.5.label="Park" efk.efklist.5.status="1" efk.efklist.5.action.string="$FTransfer$CALLPARK$FDial$$Cp5$$Chu$" efk.efklist.6.mname="DND" efk.efklist.6.label="DND" efk.efklist.6.status="1" efk.efklist.6.action.string="$FDoNotDisturb$" efk.efklist.7.mname="RDial" efk.efklist.7.label="RDial" efk.efklist.7.action.string="$FRedial$">
   </feature>
-  <softkey softkey.1.enable="1" softkey.1.label="Park" softkey.1.action="!CallPark" softkey.1.use.active="1" softkey.1.use.hold="1" softkey.2.enable="1" softkey.2.label="Busy" softkey.2.action="!DND" softkey.2.use.idle="1" softkey.2.insert="3" softkey.3.enable="1" softkey.3.insert="4" softkey.3.label="" softkey.3.action="" softkey.3.use.idle="1" softkey.4.enable="1" softkey.4.insert="5" softkey.4.label="" softkey.4.action="" softkey.4.use.idle="1">
+  <softkey softkey.1.enable="1" softkey.1.label="Park" softkey.1.action="!CallPark" softkey.1.use.active="1" softkey.1.use.hold="1" softkey.2.enable="1" softkey.2.label="" softkey.2.action="" softkey.2.use.idle="1" softkey.2.insert="3" softkey.3.enable="1" softkey.3.insert="4" softkey.3.label="" softkey.3.action="" softkey.3.use.idle="1" softkey.4.enable="1" softkey.4.insert="5" softkey.4.label="" softkey.4.action="" softkey.4.use.idle="1">
   </softkey>
-  <dialplan dialplan.impossibleMatchHandling="2" DIALPLAN />
+<dialplan dialplan.impossibleMatchHandling="2" DIALPLAN />
   <rt se.rt.4.name="Ring Answer" se.rt.4.type="ring-answer" se.rt.4.timeout="500" se.rt.4.ringer="ringer10" se.rt.4.callWait="6" se.rt.4.mod="1">
   </rt>
   <sip voIpProt.SIP.serverFeatureControl.dnd="1" voIpProt.SIP.serverFeatureControl.localProcessing.dnd="0" voIpProt.SIP.alertInfo.2.value="Auto Answer" voIpProt.SIP.alertInfo.2.class="4">
@@ -25,4 +17,6 @@
   <user_preferences up.useDirectoryNames="1" up.oneTouchVoiceMail="1"/>
   </user_preferences>
   LINEKEYS
+  <attendant attendant.behaviors.display.spontaneousCallAppearances.normal="0"/>
 </polycomConfig>
+
