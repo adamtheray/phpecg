@@ -25,10 +25,15 @@ foreach($accessData as $access){
 		if(!in_array($access,$phoneExtHeaders))$phoneExtData->insertColumn($access);
 	}
 }
-$goodColumns=array("mac","ext","pass","phoneExtIndex","attendantIndex");
+$goodColumns=array("mac","ext","pass","phoneExtIndex","AltSIP","AltNTP");
 foreach($phoneExtHeaders as $header){
 	if(!in_array($header,$accessData) && !in_array($header,$goodColumns)){
 		$phoneExtData->deleteColumn($header);
+	}
+}
+foreach($goodColumns as $column){
+	if(!in_array($column,$phoneExtHeaders)){
+		$phoneExtData->insertColumn($column);
 	}
 }
 switch($_GET['action']){
@@ -59,8 +64,8 @@ switch($_GET['action']){
 			foreach($extensions as $extension){
 				$options.="<option value=\"$extension\">$extension</option>";
 			}
-			?><br><br><form method="GET" action=""><input type="hidden" name="action" value="writePhone" />Choose Extension: <select name="extension"/><option value="">All</option><?=$options;?></select><input type="submit" name="mode" value="Go!"></form>
-			<?
+			?><br><br><form method="GET" action=""><input type="hidden" name="action" value="writePhone" />Choose Extension: <select name="extension"/><option value="">All</option><?php print $options;?></select><input type="submit" name="mode" value="Go!"></form>
+			<?php
 		}
 		elseif($_GET['confirm']!="yes" && $_GET['extension']=="")echo "<br><br><b>This will overwrite all existing configs. Do you wish to do this? <a href=\"?action=writePhone&confirm=yes&mode=multiple\">Yes</a>&nbsp;&nbsp;<a href=\".\">No</a></b>";
 		else {
