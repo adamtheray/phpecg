@@ -60,6 +60,6 @@ if ($linekeysYorN=="Y"){
 	$linekeyText.="><lineKey.reassignment lineKey.reassignment.enabled=\"1\" \/><\/linekey>";
 }
 else $linekeyText="";
-$command="cat sip-basic.cfg.template | sed 's/DIALPLAN/$dialplanText/g' | sed 's/SEPARATOR/,/g' | sed 's/CALLPARK/$parkText/g' | sed 's/LINEKEYS/$linekeyText/g' > ".$path."sip-basic.cfg";
+$command="cat company.cfg.template | sed 's/DIALPLAN/$dialplanText/g' | sed 's/SEPARATOR/,/g' | sed 's/CALLPARK/$parkText/g' | sed 's/LINEKEYS/$linekeyText/g' | sed 's/SIPSERVER/$SIPServer/g' | sed 's/NTPSERVER/$NTPServer/g' > ".$path."company.cfg";
 shell_exec($command);
 ?>

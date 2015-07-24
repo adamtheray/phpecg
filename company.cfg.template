@@ -1,0 +1,28 @@
+<sip>
+   <voIpProt>
+      <server voIpProt.server.1.address="SIPSERVER" voIpProt.server.1.expires="3600" voIpProt.server.1.retryTimeOut="60"/>
+      <SIP>
+         <outboundProxy voIpProt.SIP.outboundProxy.address="SIPSERVER"/>
+         <alertInfo voIpProt.SIP.alertInfo.2.value="Ring Answer" voIpProt.SIP.alertInfo.2.class="4"/>
+      </SIP>
+   </voIpProt>
+   <dialplan dialplan.impossibleMatchHandling="2">
+     <digitmap DIALPLAN/>
+   <dialplan/>
+   <user_preferences up.useDirectoryNames="1" up.oneTouchVoiceMail="1"/>
+   <sound_effects>
+      <patterns>
+         <MISCELLANEOUS>
+            <MESSAGE_WAITING se.pat.misc.1.name="message waiting" se.pat.misc.1.inst.1.type="silent" se.pat.misc.1.inst.1.value="1" se.pat.misc.1.inst.2.type="silent" se.pat.misc.1.inst.2.value="2" se.pat.misc.1.inst.3.type="silent" se.pat.misc.1.inst.3.value="1"/>
+         </MISCELLANEOUS>
+      </patterns>
+      <ringType>
+         <RING_ANSWER se.rt.4.name="Ring Answer" se.rt.4.type="ring-answer" se.rt.4.timeout="500" se.rt.4.ringer="7" se.rt.4.callWait="6" se.rt.4.mod="1"/>
+      </ringType>
+   </sound_effects>
+   <TCP_IP>
+      <SNTP tcpIpApp.sntp.address="NTPSERVER" tcpIpApp.sntp.gmtOffset="-18000"/>
+   </TCP_IP>
+   <presence pres.reg="1"/>
+   <feature feature.1.name="presence" feature.1.enabled="1" feature.10.name="call-park" feature.10.enabled="1"/>
+</sip>

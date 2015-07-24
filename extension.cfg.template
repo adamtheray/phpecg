@@ -1,0 +1,6 @@
+<phone1>
+   <reg reg.1.displayName="EXTENSION" reg.1.address="EXTENSION" reg.1.label="EXTENSION" reg.1.type="private" reg.1.thirdPartyName="EXTENSION" reg.1.auth.userId="EXTENSION" reg.1.auth.password="PASSWORD" reg.1.lineKeys="2"/>
+   <msg msg.bypassInstantMessage="1">
+      <mwi msg.mwi.1.subscribe="EXTENSION" msg.mwi.1.callBackMode="contact" msg.mwi.1.callBack="*97"/>
+   </msg>
+</phone1>
