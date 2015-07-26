@@ -18,5 +18,6 @@
   </user_preferences>
   LINEKEYS
   <attendant attendant.behaviors.display.spontaneousCallAppearances.normal="0"/>
+  <auth device.auth.localAdminPassword.set="1" device.auth.localAdminPassword="789"/>
 </polycomConfig>
 
