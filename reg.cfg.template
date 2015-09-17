@@ -12,7 +12,7 @@
   <time tcpIpApp.sntp.address="NTPSERVER" tcpIpApp.sntp.gmtOffset.overrideDHCP="1" tcpIpApp.sntp.gmtOffset="-18000" />
   <call call.callsPerLineKey="24">
   </call>
-  <reg reg.1.address="EXTENSION" reg.1.auth.password="PASSWORD" reg.1.auth.userId="EXTENSION" reg.1.label="EXTENSION" reg.1.outboundProxy.address="" reg.2.address="" reg.2.auth.password="" reg.2.auth.userId="" reg.2.label="" reg.2.outboundProxy.address="" reg.1.lineKeys="1">
+  <reg reg.1.address="EXTENSION" reg.1.auth.password="PASSWORD" reg.1.auth.userId="EXTENSION" reg.1.label="EXTENSION" reg.1.outboundProxy.address="" reg.1.lineKeys="REG1LINEKEYS">
   </reg>
   ATTENDANT
 </polycomConfig>
