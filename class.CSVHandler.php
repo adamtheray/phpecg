@@ -178,14 +178,14 @@ class CSVHandler {
 		while(list($LineKey,$LineVal)=each($this->ItemsList)) {	//Read Data Lines
 			$HDataLine="";
 			while(list($DataKey,$DataVal)=each($LineVal)) {			//Dissect one Data Line
-				$HDataLine.=$this->HTInput($DataKey,$DataVal);
+				$HDataLine.=$this->HTInput($DataKey,$DataVal,$LineVal[$this->DataKey]);
 			}
 			$HData.=$this->HTForm($LineVal[$this->DataKey],$this->HTTR($this->HTButton("commit").$HDataLine.$this->HTButton("delete")));	//and add HTML to Data
 		}
 		$HDataLine="";
 		reset($this->HeaderData);
 		while(list($DataKey,$DataVal)=each($this->HeaderData)) {			// Add an extra Line for Adding a record
-			$HDataLine.=$this->HTInput($DataVal,"");
+			$HDataLine.=$this->HTInput($DataVal,"",$LineVal[$this->DataKey]);
 		}
 		$HData.=$this->HTForm($LineVal[$this->DataKey],$this->HTTR($this->HTButton("add").$HDataLine));	//and add HTML to Data
 		return($this->HTPage($this->HTTable($HHeaders.$HData)));
@@ -223,7 +223,29 @@ class CSVHandler {
 		$result.="<html><head><title>".$this->DataFile." Editor</title>\n";
 		$result.="<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n";
 		$result.="<style type=\"text/css\">";
-		$result.="<!--  td { margin: 0px; padding: 0px; border: 1px solid #003399; } --></style></head>\n";
+		$result.="<!--  td { margin: 0px; padding: 0px; border: 1px solid #003399; } --></style>";
+		$result.="
+<script type='text/javascript'>
+	function inputChangeCheck(orgValue,field,lineVal){
+		inputId=field+lineVal;
+		if(document.getElementById(inputId).value!=orgValue){
+			for(formI=0;formI<document.forms.length;formI++){
+				thisForm=document.forms[formI];
+				if(thisForm.name!=lineVal){
+					for(formChildI=0;formChildI<thisForm.length;formChildI++){
+						thisChild=thisForm[formChildI];
+						if (thisChild.value=='add' || thisChild.value=='commit' || thisChild.value=='delete'){
+							thisChild.style.display='none';
+						} else {
+							thisChild.disabled=true;
+							thisChild.onClick=function(){alert('test');}
+						}
+					}
+				}
+			}
+		}
+	}
+</script></head>\n";
 		$result.="<body>\n".$value."</body>\n</html>";
 		return $result;
 	}
@@ -240,14 +262,14 @@ class CSVHandler {
 	function HTTD($value) {	// places $value into TD
 		return "<td bgcolor=\"".$this->color."\">".$value."</td>\n";
 	}
-	function HTInput($field,$value) {	//returns TD input field
+	function HTInput($field,$value,$LineVal) {	//returns TD input field
 		$Olen=strlen($value);
 		if($Olen<3) {
 			$Ilen=12;
 		} else {
 			$Ilen=$Olen;
 		}
-		return "<td bgcolor=\"".$this->color."\"><input name=\"".$field."\" type=\"text\" id=\"".$field."\" value=\"".$value."\" size=\"".$Ilen."\"></td>\n";
+		return "<td bgcolor=\"".$this->color."\"><input onblur=\"inputChangeCheck('$value','$field','$LineVal');\" name=\"".$field."\" type=\"text\" id=\"".$field.$LineVal."\" value=\"".$value."\" size=\"".$Ilen."\"></td>\n";
 	}	
 	function HTButton($value) {	// returns "$value" button
 		return "<td><input name=\"".$value."\" type=\"submit\" id=\"".$value."\" value=\"".$value."\"></td>\n";
