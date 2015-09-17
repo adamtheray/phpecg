@@ -6,6 +6,10 @@ $changeme=0;
 foreach($templateSettings->getData() as $templateSetting){
 	$settingFound=0;
 	foreach($settingsData->getData() as $setting){
+		if($setting['Name']=="path" && $setting['Value']!= "CHANGEME" && substr($setting['Value'],-1)!="/"){
+			$setting['Value']=$setting['Value']."/";
+			$settingsData->Update($setting['settingsIndex'],$setting);		
+		}
 		if($templateSetting['Name']==$setting['Name']){
 			$settingFound=1;
 			break;
