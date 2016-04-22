@@ -8,34 +8,6 @@
 include_once("class.CSVHandler.php");
 include_once("functions.php");
 include_once("settings.php");
-$configPath=$path."phpecg/";
-if (!file_exists($configPath)) {
-	mkdir($path.phpecg, 0775, true);
-}
-$dataFiles=array(attendants=>"attendants.csv",phoneExt=>"phoneExt.csv",dialplan=>"dialplan.csv",linekeys=>"linekeys.csv");
-foreach($dataFiles as $var=>$dataFile){
-	templateCheck($dataFile, $configPath);
-	$varName=$var."Data";
-	$$varName=new CSVHandler($configPath.$dataFile,",", $var."Index");
-}
-$accessData=$attendantsData->GetValues("access");
-$phoneExtHeaders=$phoneExtData->getHeaders();
-foreach($accessData as $access){
-	if($access!=""){
-		if(!in_array($access,$phoneExtHeaders))$phoneExtData->insertColumn($access);
-	}
-}
-$goodColumns=array("mac","ext","tempExt","pass","phoneExtIndex","AltSIP","AltNTP");
-foreach($phoneExtHeaders as $header){
-	if(!in_array($header,$accessData) && !in_array($header,$goodColumns)){
-		$phoneExtData->deleteColumn($header);
-	}
-}
-foreach($goodColumns as $column){
-	if(!in_array($column,$phoneExtHeaders)){
-		$phoneExtData->insertColumn($column);
-	}
-}
 switch($_GET['action']){
 	case "edit":
 		switch ($_GET['file']){

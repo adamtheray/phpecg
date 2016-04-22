@@ -1,4 +1,6 @@
 <?php
+$wwwDir=realpath(dirname(__FILE__))."/";
+if(getcwd()!=$wwwDir)chdir($wwwDir);
 if(!file_exists(".settings.csv"))copy("settings.template.csv",".settings.csv");
 $settingsData=new CSVHandler(".settings.csv",",", "settingsIndex");
 $templateSettings=new CSVHandler("settings.template.csv",",","settingsIndex");
@@ -28,5 +30,33 @@ if($changeme==1 && $_GET['file']!="settings"){
 	$_GET['file']="settings";
 	$_GET['action']="edit";
 	print "<br><br><font color=\"red\">You need to change the default settings.</font><br><br>";
+}
+$configPath=$path."phpecg/";
+if (!file_exists($configPath)) {
+	mkdir($path.phpecg, 0775, true);
+}
+$dataFiles=array(attendants=>"attendants.csv",phoneExt=>"phoneExt.csv",dialplan=>"dialplan.csv",linekeys=>"linekeys.csv");
+foreach($dataFiles as $var=>$dataFile){
+	templateCheck($dataFile, $configPath);
+	$varName=$var."Data";
+	$$varName=new CSVHandler($configPath.$dataFile,",", $var."Index");
+}
+$accessData=$attendantsData->GetValues("access");
+$phoneExtHeaders=$phoneExtData->getHeaders();
+foreach($accessData as $access){
+	if($access!=""){
+		if(!in_array($access,$phoneExtHeaders))$phoneExtData->insertColumn($access);
+	}
+}
+$goodColumns=array("mac","ext","tempExt","pass","phoneExtIndex","AltSIP","AltNTP");
+foreach($phoneExtHeaders as $header){
+	if(!in_array($header,$accessData) && !in_array($header,$goodColumns)){
+		$phoneExtData->deleteColumn($header);
+	}
+}
+foreach($goodColumns as $column){
+	if(!in_array($column,$phoneExtHeaders)){
+		$phoneExtData->insertColumn($column);
+	}
 }
 ?>
