@@ -8,7 +8,7 @@
 //=====================================================================================================================
 #
 #
-# Copyright (C) 2005 by Andreas Müller
+# Copyright (C) 2005 by Andreas Mï¿½ller
 # Modified by Adam Ray
 
 class CSVHandler {
@@ -27,7 +27,7 @@ class CSVHandler {
 		$this->Separator=$Separator;
 		$this->color="#FFFFFF";
 	}
-	function ReadCSV() {			//read data into this->ItemsList and return it in an array 
+	function ReadCSV() {			//read data into this->ItemsList and return it in an array
 		$this->Items_Count=0;
 		$this->ItemsList=array();
 		$Item=array();
@@ -52,7 +52,7 @@ class CSVHandler {
 		$this->ReadCSV();
 		return($this->ItemsList);
 	}
-	
+
 	function insertColumn($columnName){
 		$this->ReadCSV();
 		array_push($this->HeaderData,$columnName);
@@ -61,7 +61,7 @@ class CSVHandler {
 		}
 		$this->writeData();
 	}
-	
+
 	function deleteColumn($columName){
 		$this->ReadCSV();
 		for($i=0;$i<count($this->HeaderData);$i++){
@@ -123,21 +123,21 @@ class CSVHandler {
 		if(isset($_POST['commit'])) {
 			$this->Update($_POST[$this->DataKey],$_POST);
 			$Data=$this->ReadCSV();
-		}	
+		}
 		if(isset($_POST['add'])) {
 			if(!in_array("1",$this->GetValues($this->DataKey)))$_POST[$this->DataKey]=1;
 			elseif((in_array($_POST[$this->DataKey],$this->GetValues($this->DataKey)))==1 || ($_POST[$this->DataKey]==""))$_POST[$this->DataKey]=max($this->GetValues($this->DataKey))+1;
 			$this->Add($_POST[$this->DataKey],$_POST);
 			$Data=$this->ReadCSV();
-		}	
+		}
 		if(isset($_POST['delete'])) {
 			$this->Delete($_POST[$this->DataKey]);
 			$Data=$this->ReadCSV();
-		}	
+		}
 		$PAGE=$this->EditList();
-		print $PAGE;	
+		print $PAGE;
 	}
-	
+
 //	Administration Area
 	function Update($key,$data) {		//Updating Item "key" with "data" named array
 		$this->ReadCSV();
@@ -146,7 +146,7 @@ class CSVHandler {
 				while(list($key,$val)=each($this->HeaderData)) {
 					if(isset($data[$val])) $this->ItemsList[$i][$val]=$data[$val];
 				}
-			}	
+			}
 		}
 		$this->WriteData();
 		return($this->ItemsList);
@@ -270,7 +270,7 @@ class CSVHandler {
 			$Ilen=$Olen;
 		}
 		return "<td bgcolor=\"".$this->color."\"><input onblur=\"inputChangeCheck('$value','$field','$LineVal');\" name=\"".$field."\" type=\"text\" id=\"".$field.$LineVal."\" value=\"".$value."\" size=\"".$Ilen."\"></td>\n";
-	}	
+	}
 	function HTButton($value) {	// returns "$value" button
 		return "<td><input name=\"".$value."\" type=\"submit\" id=\"".$value."\" value=\"".$value."\"></td>\n";
 	}

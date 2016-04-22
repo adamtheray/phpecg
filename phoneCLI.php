@@ -3,10 +3,15 @@
 include_once('class.CSVHandler.php');
 include_once('settings.php');
 switch ($argv[1]){
-	case "update":
-		echo "Updating extension";
+	case "login":
+		if (!$argv[2]||!$argv[3]){}
+		die (usage());
 		break;
 	default:
-		echo "Usage:\r\nphoneCLI.php [operation] [tempExt] [ext]\r\n";
+		usage();
+}
+function usage(){
+	$um="Usage:\r\nphoneCLI.php [operation] [tempExt] [ext]\r\n";
+	return $um;
 }
 ?>
