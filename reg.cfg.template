@@ -9,6 +9,7 @@
       </voIpProt.SIP.outboundProxy>
     </voIpProt.SIP>
   </voIpProt>
+  <Volume voice.volume.persist.headset="1" voice.volume.persist.handset="1" />
   <time tcpIpApp.sntp.address="NTPSERVER" tcpIpApp.sntp.gmtOffset.overrideDHCP="1" tcpIpApp.sntp.gmtOffset="-18000" />
   <call call.callsPerLineKey="24">
   </call>
