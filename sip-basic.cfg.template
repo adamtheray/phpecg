@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- Generated sip-basic.cfg Configuration File -->
 <polycomConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="polycomConfig.xsd">
+  <device device.set="1">
+  <auth device.auth.localAdminPassword.set="1" device.auth.localAdminPassword="789"/>
+  <call call.DefaultTransferType="Blind" />
+  <httpd httpd.enabled="1" />
+  <time tcpIpApp.sntp.address="SIPSERVER" tcpIpApp.sntp.gmtOffset.overrideDHCP="1" tcpIpApp.sntp.gmtOffset="-18000" />
   <msg>
     <msg.mwi msg.mwi.1.callBackMode="contact" msg.mwi.1.callBack="*97" msg.mwi.2.callBackMode="registration">
     </msg.mwi>
   </msg>
-<feature feature.urlDialing.enabled="0" feature.enhancedFeatureKeys.enabled="1" efk.efklist.5.mname="CallPark" efk.efklist.5.label="Park" efk.efklist.5.status="1" efk.efklist.5.action.string="$FTransfer$CALLPARK$FDial$$Cp5$$Chu$" efk.efklist.6.mname="DND" efk.efklist.6.label="DND" efk.efklist.6.status="1" efk.efklist.6.action.string="$FDoNotDisturb$" efk.efklist.7.mname="RDial" efk.efklist.7.label="RDial" efk.efklist.7.action.string="$FRedial$">
+  <voIpProt>
+    <voIpProt.server voIpProt.server.1.address="SIPSERVER" voIpProt.server.1.port="0" voIpProt.server.2.address="" voIpProt.server.2.port="0">
+    </voIpProt.server>
+    <voIpProt.SIP voIpProt.SIP.enable="1">
+      <voIpProt.SIP.outboundProxy voIpProt.SIP.outboundProxy.address="SIPSERVER">
+      </voIpProt.SIP.outboundProxy>
+    </voIpProt.SIP>
+  </voIpProt>
+<feature feature.urlDialing.enabled="0" feature.enhancedFeatureKeys.enabled="1" efk.efklist.5.mname="CallPark" efk.efklist.5.label="Park" efk.efklist.5.status="1" efk.efklist.5.action.string="$FTransfer$$FDialpad8$$FDialpad0$$FDial$$Cp5$$Chu$" efk.efklist.6.mname="DND" efk.efklist.6.label="DND" efk.efklist.6.status="1" efk.efklist.6.action.string="$FDoNotDisturb$" efk.efklist.7.mname="RDial" efk.efklist.7.label="RDial" efk.efklist.7.action.string="$FRedial$">
   </feature>
   <softkey softkey.1.enable="1" softkey.1.label="Park" softkey.1.action="!CallPark" softkey.1.use.active="1" softkey.1.use.hold="1" softkey.2.enable="1" softkey.2.label="" softkey.2.action="" softkey.2.use.idle="1" softkey.2.insert="3" softkey.3.enable="1" softkey.3.insert="4" softkey.3.label="" softkey.3.action="" softkey.3.use.idle="1" softkey.4.enable="1" softkey.4.insert="5" softkey.4.label="" softkey.4.action="" softkey.4.use.idle="1">
   </softkey>
@@ -18,5 +31,4 @@
   </user_preferences>
   LINEKEYS
   <attendant attendant.behaviors.display.spontaneousCallAppearances.normal="0"/>
-  <auth device.auth.localAdminPassword.set="1" device.auth.localAdminPassword="789"/>
 </polycomConfig>
