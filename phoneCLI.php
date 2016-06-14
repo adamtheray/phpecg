@@ -6,7 +6,7 @@ include_once('settings.php');
 $ext=$argv[2];
 $tempExt=$argv[3];
 switch ($argv[1]){
-	case "login":
+	case "logon":
 		if (!$argv[2]||!$argv[3]) die (usage("You need to provide values for both the tempext and the ext variables to use the login function."));
 		$tempExtFound=false;
 		foreach($phoneExtData->getData() as $thisPhoneExt){
