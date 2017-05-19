@@ -13,11 +13,6 @@ if($dialplanDigitMap!=""){
 	if($dialplanTimeouts!="")$dialplanText.="dialplan.digitmap.timeout=\"$dialplanTimeouts\" ";
 }
 else $dialplanText="";
-$parkText="";
-for($i=0;$i<strlen($ParkExtension);$i++){
-	$thisChar=substr($ParkExtension,$i,1);
-	$parkText.="\$FDialPad$thisChar\$";
-}
 if ($linekeysYorN=="Y"){
 	$linekeyText="<lineKey ";
 	$i=1;
@@ -60,6 +55,6 @@ if ($linekeysYorN=="Y"){
 	$linekeyText.="><lineKey.reassignment lineKey.reassignment.enabled=\"1\" \/><\/linekey>";
 }
 else $linekeyText="";
-$command="cat sip-basic.cfg.template | sed 's/DIALPLAN/$dialplanText/g' | sed 's/SEPARATOR/,/g' | sed 's/CALLPARK/$parkText/g' | sed 's/LINEKEYS/$linekeyText/g' > ".$path."sip-basic.cfg";
+$command="cat sip-basic.cfg.template | sed 's/DIALPLAN/$dialplanText/g' | sed 's/SEPARATOR/,/g' | sed 's/LINEKEYS/$linekeyText/g' > ".$path."sip-basic.cfg";
 shell_exec($command);
 ?>
