@@ -5,6 +5,7 @@
 <body>
 <a href="?action=edit&file=phoneExt">Edit Phones</a>&nbsp;&nbsp;<a href="?action=edit&file=attendants">Edit Attendants</a>&nbsp;&nbsp;<a href="?action=edit&file=linekeys">Edit LineKeys</a>&nbsp;&nbsp;<a href="?action=edit&file=dialplan">Edit Dialplan</a>&nbsp;&nbsp;<a href="?action=writePhone">Write Phone Configs</a>&nbsp;&nbsp;<a href="?action=writeSIP">Write SIP Config</a>&nbsp;&nbsp;<a href="?action=edit&file=settings">Edit Settings</a>
 <?php
+error_reporting(0);
 include_once("class.CSVHandler.php");
 include_once("functions.php");
 include_once("settings.php");
