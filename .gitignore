@@ -1,2 +1,6 @@
 .remote-sync.json
 .settings.csv
+phpecg/attendants.csv
+phpecg/dialplan.csv
+phpecg/linekeys.csv
+phpecg/phoneExt.csv
