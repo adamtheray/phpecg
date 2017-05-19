@@ -15,5 +15,8 @@
   </call>
   <reg reg.1.address="EXTENSION" reg.1.auth.password="PASSWORD" reg.1.auth.userId="EXTENSION" reg.1.label="EXTENSION" reg.1.outboundProxy.address="" reg.1.lineKeys="REG1LINEKEYS">
   </reg>
+  <feature efk.efklist.5.mname="CallPark" efk.efklist.5.label="Park" efk.efklist.5.status="1" efk.efklist.5.action.string="$FTransfer$PARKEXT$FDial$$Cp5$$Chu$" efk.efklist.6.mname="DND" efk.efklist.6.label="DND" efk.efklist.6.status="1" efk.efklist.6.action.string="$FDoNotDisturb$" efk.efklist.7.mname="RDial" efk.efklist.7.label="RDial" efk.efklist.7.action.string="$FRedial$">
+
+  </feature>
   ATTENDANT
 </polycomConfig>

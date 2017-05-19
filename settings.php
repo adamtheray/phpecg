@@ -48,7 +48,7 @@ foreach($accessData as $access){
 		if(!in_array($access,$phoneExtHeaders))$phoneExtData->insertColumn($access);
 	}
 }
-$goodColumns=array("mac","ext","tempExt","pass","phoneExtIndex","AltSIP","AltNTP");
+$goodColumns=array("mac","ext","tempExt","pass","phoneExtIndex","AltSIP","AltNTP","AltParkExt");
 foreach($phoneExtHeaders as $header){
 	if(!in_array($header,$accessData) && !in_array($header,$goodColumns)){
 		$phoneExtData->deleteColumn($header);

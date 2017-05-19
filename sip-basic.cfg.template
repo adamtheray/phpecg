@@ -18,7 +18,7 @@
       </voIpProt.SIP.outboundProxy>
     </voIpProt.SIP>
   </voIpProt>
-<feature feature.urlDialing.enabled="0" feature.enhancedFeatureKeys.enabled="1" efk.efklist.5.mname="CallPark" efk.efklist.5.label="Park" efk.efklist.5.status="1" efk.efklist.5.action.string="$FTransfer$$FDialpad8$$FDialpad0$$FDial$$Cp5$$Chu$" efk.efklist.6.mname="DND" efk.efklist.6.label="DND" efk.efklist.6.status="1" efk.efklist.6.action.string="$FDoNotDisturb$" efk.efklist.7.mname="RDial" efk.efklist.7.label="RDial" efk.efklist.7.action.string="$FRedial$">
+<feature feature.urlDialing.enabled="0" feature.enhancedFeatureKeys.enabled="1">
   </feature>
   <softkey softkey.1.enable="1" softkey.1.label="Park" softkey.1.action="!CallPark" softkey.1.use.active="1" softkey.1.use.hold="1" softkey.2.enable="1" softkey.2.label="" softkey.2.action="" softkey.2.use.idle="1" softkey.2.insert="3" softkey.3.enable="1" softkey.3.insert="4" softkey.3.label="" softkey.3.action="" softkey.3.use.idle="1" softkey.4.enable="1" softkey.4.insert="5" softkey.4.label="" softkey.4.action="" softkey.4.use.idle="1">
   </softkey>
