@@ -67,13 +67,16 @@ function genPhoneConfig($thisPhoneExt){
   foreach ($thisParkExtExp as $var){
     $thisParkExt = $thisParkExt."\$FDialpad$var\$";
   }
-  print($thisParkExt);
-  $link=mysql_connect("localhost","root","");
-  $db=mysql_select_db("asterisk",$link) or die("\r\nDB Conn Error: ".mysql_error()."\r\n");
-  $query="SELECT data AS secret FROM sip WHERE id='$thisExtension' AND keyword='secret'";
-  if(!$result=mysql_query($query,$link))die("\r\nMysqlError: ".mysql_error()."\r\nQuery:$query\r\n");
-  $row=mysql_fetch_array($result);
-  $password=mysql_num_rows($result)>0?$row['secret']:$thisPhoneExt['pass'];
+  if ($thisPhoneExt['pass']=="") {
+    $link=mysql_connect("localhost","root","");
+    $db=mysql_select_db("asterisk",$link) or die("\r\nDB Conn Error: ".mysql_error()."\r\n");
+    $query="SELECT data AS secret FROM sip WHERE id='$thisExtension' AND keyword='secret'";
+    if(!$result=mysql_query($query,$link))die("\r\nMysqlError: ".mysql_error()."\r\nQuery:$query\r\n");
+    $row=mysql_fetch_array($result);
+    $password=$row['secret'];
+  } else {
+    $password=$thisPhoneExt['pass'];
+  }
 	$command="cat reg.cfg.template | sed 's/SIPSERVER/$thisSIP/g' | sed 's/EXTENSION/".$thisExtension."/g' | sed 's/PASSWORD/".$password."/g' | sed 's/ATTENDANT/".$thisPhoneExt['attendants']."/g' | sed 's/SEPARATOR/,/g' | sed 's/NTPSERVER/$thisNTP/g' | sed 's/REG1LINEKEYS/".$reg1linekeys."/g' | sed 's/PARKEXT/".$thisParkExt."/g' > $path".$thisPhoneExt['mac']."-reg.cfg";
   shell_exec($command);
 }
