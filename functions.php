@@ -79,7 +79,7 @@ function genPhoneConfig($thisPhoneExt){
   } else {
     $password=$thisPhoneExt['pass'];
   }
-	$command="cat reg.cfg.template | sed 's/SIPSERVER/$thisSIP/g' | sed 's/EXTENSION/".$thisExtension."/g' | sed 's/PASSWORD/".$password."/g' | sed 's/ATTENDANT/".$thisPhoneExt['attendants']."/g' | sed 's/SEPARATOR/,/g' | sed 's/NTPSERVER/$thisNTP/g' | sed 's/REG1LINEKEYS/".$numreg."/g' | sed 's/PARKEXT/".$thisParkExt."/g' > $path".$thisPhoneExt['mac']."-reg.cfg";
+	$command="cat reg.cfg.template | sed 's/SIPSERVER/$thisSIP/g' | sed 's/EXTENSION/".$thisExtension."/g' | sed 's/PASSWORD/".$password."/g' | sed 's/ATTENDANT/".$thisPhoneExt['attendants']."/g' | sed 's/SEPARATOR/,/g' | sed 's/NTPSERVER/$thisNTP/g' | sed 's/REG1LINEKEYS/".$numReg."/g' | sed 's/PARKEXT/".$thisParkExt."/g' > $path".$thisPhoneExt['mac']."-reg.cfg";
   shell_exec($command);
 }
 ?>
