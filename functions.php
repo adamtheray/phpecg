@@ -61,7 +61,9 @@ function genPhoneConfig($thisPhoneExt){
 	if(!$thisPhoneExt['AltNTP']=="") $thisNTP=$thisPhoneExt['AltNTP'];
 	else $thisNTP=$NTPServer;
   if(!$thisPhoneExt['AltParkExt']=="") $thisParkExt = $thisPhoneExt['AltParkExt'];
-  else $thisParkExt=$ParkExtension;
+	else $thisParkExt=$ParkExtension;
+	if($thisPhoneExt['AltNumReg']) $numReg = $thisPhoneExt['AltNumReg'];
+	else $numReg = $reg1linekeys;
   $thisParkExtExp = str_split($thisParkExt,1);
   $thisParkExt="";
   foreach ($thisParkExtExp as $var){
@@ -77,7 +79,7 @@ function genPhoneConfig($thisPhoneExt){
   } else {
     $password=$thisPhoneExt['pass'];
   }
-	$command="cat reg.cfg.template | sed 's/SIPSERVER/$thisSIP/g' | sed 's/EXTENSION/".$thisExtension."/g' | sed 's/PASSWORD/".$password."/g' | sed 's/ATTENDANT/".$thisPhoneExt['attendants']."/g' | sed 's/SEPARATOR/,/g' | sed 's/NTPSERVER/$thisNTP/g' | sed 's/REG1LINEKEYS/".$reg1linekeys."/g' | sed 's/PARKEXT/".$thisParkExt."/g' > $path".$thisPhoneExt['mac']."-reg.cfg";
+	$command="cat reg.cfg.template | sed 's/SIPSERVER/$thisSIP/g' | sed 's/EXTENSION/".$thisExtension."/g' | sed 's/PASSWORD/".$password."/g' | sed 's/ATTENDANT/".$thisPhoneExt['attendants']."/g' | sed 's/SEPARATOR/,/g' | sed 's/NTPSERVER/$thisNTP/g' | sed 's/REG1LINEKEYS/".$numreg."/g' | sed 's/PARKEXT/".$thisParkExt."/g' > $path".$thisPhoneExt['mac']."-reg.cfg";
   shell_exec($command);
 }
 ?>
